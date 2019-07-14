@@ -1,4 +1,4 @@
-import org.apache.http.HttpResponse;
+import com.oculow.Oculow;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
