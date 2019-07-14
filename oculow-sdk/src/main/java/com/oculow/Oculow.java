@@ -1,3 +1,5 @@
+package com.oculow;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -7,14 +9,12 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.apache.commons.lang.StringUtils;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static Utils.Network.postRequest;
+import static com.oculow.Utils.Network.postRequest;
 
 public class Oculow {
     private final String reportBaseUrl = "http://127.0.0.1:5502/dashboard/executions.html";
