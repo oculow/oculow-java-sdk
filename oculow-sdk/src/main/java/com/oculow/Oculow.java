@@ -36,11 +36,15 @@ public class Oculow {
     private String viewportWidth ="";
     private String viewportHeight = "";
 
-    public void captureScreen(WebDriver driver){
+    public void captureScreen(WebDriver driver, String baselineId){
         viewportWidth=String.valueOf(driver.manage().window().getSize().getWidth());
         viewportHeight= String.valueOf(driver.manage().window().getSize().getHeight());
+        File id= new File(baselineId);
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        uploadImage(scrFile);
+        scrFile.renameTo(id);
+        uploadImage(id);
+        id.delete();
+        scrFile.delete();
 
     }
     public String uploadImage(File image){
@@ -112,7 +116,7 @@ public class Oculow {
         else if (results.toLowerCase().contains("failed")) {
             System.out.println(String.format("Tests failed, please review at %s?id=%s", reportBaseUrl, executionId));
         }
-        assert results.equals("passed");
+        assert results.toLowerCase().contains("passed");
 
         System.out.println(String.format("To view a detailed report of the execution please navigate to %s?id=%s", reportBaseUrl, executionId));
 
