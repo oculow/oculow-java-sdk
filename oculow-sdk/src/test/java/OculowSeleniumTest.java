@@ -1,6 +1,8 @@
 import com.oculow.Oculow;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -14,19 +16,43 @@ public class OculowSeleniumTest {
         oculow = new Oculow();
         driver = new ChromeDriver();
         // Set controlled window size
-        Dimension d = new Dimension(800,480);
-        driver.manage().window().setSize(d);
+        //Dimension d = new Dimension(1920,1080);
+        driver.manage().window().maximize();
     }
     @Test
     public void testCaptureScreen() {
         // launch Fire fox and direct it to the Base URL
         driver.get("https://www.oculow.com/");
-        oculow.captureScreen(driver, "created");
-
         // get the actual value of the title
         String actualTitle = driver.getTitle();
-
         assert actualTitle.contentEquals("Oculow");
+
+        oculow.captureScreen(driver, "home page");
+
+        WebElement _el = driver.findElement(By.id("txtEmail"));
+        _el.sendKeys("diego.ferrand@abstracta.com.uy");
+        _el = driver.findElement(By.id("txtEmail"));
+
+        oculow.captureScreen(driver, "form submit");
+
+        _el.click();
+
+        driver.get("https://www.oculow.com/dashboard/index.html");
+
+        /*
+        #TODO not working on website
+        driver.findElement(By.id("btn_signin")).click();
+        oculow.captureScreen(driver, "login");
+        driver.findElement(By.id("username")).sendKeys("test");
+        driver.findElement(By.id("password")).sendKeys("test");
+
+        oculow.captureScreen(driver, "login complete");
+        driver.findElement(By.id("btn_signin")).click();
+        */
+
+        oculow.captureScreen(driver, "dashboard index");
+
+
 
     }
     @AfterTest

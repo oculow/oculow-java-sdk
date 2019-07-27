@@ -36,10 +36,21 @@ public class Oculow {
     private String viewportWidth ="";
     private String viewportHeight = "";
 
+    public void captureScreen(WebDriver driver){
+        viewportWidth=String.valueOf(driver.manage().window().getSize().getWidth());
+        viewportHeight= String.valueOf(driver.manage().window().getSize().getHeight());
+        File id= new File(driver.getTitle()+".png");
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        scrFile.renameTo(id);
+        uploadImage(id);
+        id.delete();
+        scrFile.delete();
+
+    }
     public void captureScreen(WebDriver driver, String baselineId){
         viewportWidth=String.valueOf(driver.manage().window().getSize().getWidth());
         viewportHeight= String.valueOf(driver.manage().window().getSize().getHeight());
-        File id= new File(baselineId);
+        File id= new File(baselineId+".png");
         File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         scrFile.renameTo(id);
         uploadImage(id);
