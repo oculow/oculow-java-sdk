@@ -18,6 +18,7 @@ public class OculowSeleniumTest {
         // Set controlled window size
         //Dimension d = new Dimension(1920,1080);
         driver.manage().window().maximize();
+        oculow.setComparisonLogic(1);
     }
     @Test
     public void testCaptureScreen() {
@@ -30,7 +31,7 @@ public class OculowSeleniumTest {
         oculow.captureScreen(driver, "home page");
 
         WebElement _el = driver.findElement(By.id("txtEmail"));
-        _el.sendKeys("diego.ferrand@abstracta.com.uy");
+//        _el.sendKeys("diego.ferrand@abstracta.com.uy");
         _el = driver.findElement(By.id("txtEmail"));
 
         oculow.captureScreen(driver, "form submit");

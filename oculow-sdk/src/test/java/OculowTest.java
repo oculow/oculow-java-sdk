@@ -11,13 +11,13 @@ public class OculowTest {
     @BeforeTest
     public void setup(){
         oculow = new Oculow();
-        oculow.setApiKey("b5bd77ef-4da5-498e-92df-7d8cd2c9b355");
+        oculow.setApiKey("bf4df221-ba67-43af-b66d-55d3cabe9cb5");
         oculow.setAppId("project-lince");
-        oculow.setExecutionId("5b2eee27-fbaa-408b-aece-f30e7361f063");
+        oculow.setExecutionId("5b2eee27-fbaa-408b-aece-f30e7361f064");
     }
     @Test
     public void testUploadImage() {
-        String out = oculow.uploadImage("C:\\Users\\Potosin\\Desktop\\test_images\\Capture2.PNG");
+        String out = oculow.uploadImage("C:\\Users\\potos\\Desktop\\error_example.PNG");
         String assignedOut = oculow.getExecutionID();
         assertNotEquals(out,"" );
         assertNotEquals(assignedOut,"");
