@@ -27,8 +27,8 @@ public class Oculow {
     }
 
     private String executionId;
-    private String moduleApiKey = "b5bd77ef-4da5-498e-92df-7d8cd2c9b355";  // TODO PARAMETRIZE
-    private String moduleAppId = "project-lince";  // TODO PARAMETRIZE
+    private String moduleApiKey = "0de8ef6f-7837-4deb-81ed-6837ab67da23";  // TODO PARAMETRIZE
+    private String moduleAppId = "oculow";  // TODO PARAMETRIZE
 
 
     private int moduleComparisonLogic = 0;
@@ -122,7 +122,7 @@ public class Oculow {
         assert results != null;
 
         if (results.toLowerCase().contains("action required")) {
-            System.out.println(String.format("Baseline action is required, visit %s?id=%s", reportBaseUrl, executionId));
+            System.out.println(String.format("Baseline action is required, visit %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleApiKey));
         }
         else if (results.toLowerCase().contains("failed")) {
             System.out.println(String.format("Tests failed, please review at %s?id=%s", reportBaseUrl, executionId));
