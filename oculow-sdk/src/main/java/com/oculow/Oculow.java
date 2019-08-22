@@ -17,6 +17,10 @@ import java.util.Map;
 import static com.oculow.Utils.Network.postRequest;
 
 public class Oculow {
+    enum Color
+    {
+        RED, GREEN, BLUE;
+    }
     private final String reportBaseUrl = "http://127.0.0.1:5502/dashboard/executions.html";
     private final String url = "https://us-central1-lince-232621.cloudfunctions.net/";
     private final String processFunction = "process_image-dev";  // TODO PARAMETRIZE
@@ -97,12 +101,12 @@ public class Oculow {
         this.moduleAppId = moduleAppId;
     }
 
-    public void setComparisonLogic(int moduleComparisonLogic) {
-        this.moduleComparisonLogic = moduleComparisonLogic;
+    public void setComparison(COMPARISON moduleComparisonLogic) {
+        this.moduleComparisonLogic = moduleComparisonLogic.ordinal();
     }
 
-    public void setBaselineManagement(int moduleBaselineManagement) {
-        this.moduleBaselineManagement = moduleBaselineManagement;
+    public void setBaselineManagement(MANAGEMENT moduleBaselineManagement) {
+        this.moduleBaselineManagement = moduleBaselineManagement.ordinal();
     }
 
     public String getExecutionID() {

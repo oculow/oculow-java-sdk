@@ -1,6 +1,7 @@
+import com.oculow.COMPARISON;
+import com.oculow.MANAGEMENT;
 import com.oculow.Oculow;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,10 +16,9 @@ public class OculowSeleniumTest {
     public void setup(){
         oculow = new Oculow();
         driver = new ChromeDriver();
-        // Set controlled window size
-        //Dimension d = new Dimension(1920,1080);
         driver.manage().window().maximize();
-        oculow.setComparisonLogic(1);
+        oculow.setBaselineManagement(MANAGEMENT.ASSISTED);
+        oculow.setComparison(COMPARISON.IGNORE_AA);
     }
     @Test
     public void testCaptureScreen() {
