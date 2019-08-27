@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 public class OculowSeleniumTest {
     private Oculow oculow;
-    WebDriver driver;
+    private WebDriver driver;
     @BeforeTest
     public void setup(){
         oculow = new Oculow();
@@ -20,6 +20,7 @@ public class OculowSeleniumTest {
         oculow.setBaselineManagement(MANAGEMENT.ASSISTED);
         oculow.setComparison(COMPARISON.IGNORE_AA);
     }
+
     @Test
     public void testCaptureScreen() {
         // launch Fire fox and direct it to the Base URL
@@ -52,10 +53,8 @@ public class OculowSeleniumTest {
         */
 
         oculow.captureScreen(driver, "dashboard index");
-
-
-
     }
+
     @AfterTest
     public void teardown(){
         driver.close();
