@@ -4,7 +4,7 @@
 
     <groupId>com.oculow</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
@@ -117,7 +117,7 @@
         <connection>scm:git:ssh://git@github.com:oculow/oculow-java-sdk.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:oculow/oculow-java-sdk.git</developerConnection>
         <url>https://github.com/oculow/oculow-java-sdk</url>
-        <tag>sdk-0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <profiles>
