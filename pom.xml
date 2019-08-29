@@ -4,7 +4,7 @@
 
     <groupId>com.oculow</groupId>
     <artifactId>sdk</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <name>Oculow SDK</name>
     <description>SDK used for visual testing. This sdk handles all communications with our services, so all you
     need to do to implement visual tests, is configure your project details and indicate which screens to validate.
@@ -130,7 +130,7 @@
         <connection>scm:git:ssh://git@github.com:oculow/oculow-java-sdk.git</connection>
         <developerConnection>scm:git:ssh://git@github.com:oculow/oculow-java-sdk.git</developerConnection>
         <url>https://github.com/oculow/oculow-java-sdk</url>
-        <tag>HEAD</tag>
+        <tag>sdk-0.0.2</tag>
     </scm>
 
     <profiles>
