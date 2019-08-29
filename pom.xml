@@ -18,6 +18,14 @@
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
+    <developers>
+        <developer>
+            <name>Diego Ferrand</name>
+            <email>potosin@live.com</email>
+            <organization>Oculow</organization>
+            <organizationUrl>https://www.oculow.com/</organizationUrl>
+        </developer>
+    </developers>
     <build>
         <plugins>
             <plugin>
