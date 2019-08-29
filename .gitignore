@@ -1,5 +1,6 @@
-../oculow-java-sdk_old/.idea/
+.idea/
 target/
 chromedriver*
 .DS_Store
 *.iml
+release.properties

@@ -21,7 +21,7 @@ public class Oculow {
     {
         RED, GREEN, BLUE;
     }
-    private final String reportBaseUrl = "http://127.0.0.1:5502/dashboard/executions.html";
+    private final String reportBaseUrl = "http://www.oculow.com/dashboard/executions.html";
     private final String url = "https://us-central1-lince-232621.cloudfunctions.net/";
     private final String processFunction = "process_image-dev";  // TODO PARAMETRIZE
     private final String executionStatusFunction = "get_execution_status-dev"; // TODO PARAMETRIZE
@@ -129,7 +129,7 @@ public class Oculow {
             System.out.println(String.format("Baseline action is required, visit %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleApiKey));
         }
         else if (results.toLowerCase().contains("failed")) {
-            System.out.println(String.format("Tests failed, please review at %s?id=%s", reportBaseUrl, executionId));
+            System.out.println(String.format("Tests failed, please review at %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleApiKey));
         }
         assert results.toLowerCase().contains("passed");
 

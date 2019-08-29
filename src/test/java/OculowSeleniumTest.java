@@ -13,7 +13,7 @@ public class OculowSeleniumTest {
     private Oculow oculow;
     private WebDriver driver;
     @BeforeTest
-    public void setup(){
+    private void setup(){
         oculow = new Oculow();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -22,7 +22,7 @@ public class OculowSeleniumTest {
     }
 
     @Test
-    public void testCaptureScreen() {
+    private void testCaptureScreen() {
         // launch Fire fox and direct it to the Base URL
         driver.get("https://www.oculow.com/");
         // get the actual value of the title
@@ -31,9 +31,8 @@ public class OculowSeleniumTest {
 
         oculow.captureScreen(driver, "home page");
 
-        WebElement _el = driver.findElement(By.id("txtEmail"));
+        WebElement _el = driver.findElement(By.id("landing-email"));
 //        _el.sendKeys("diego.ferrand@abstracta.com.uy");
-        _el = driver.findElement(By.id("txtEmail"));
 
         oculow.captureScreen(driver, "form submit");
 
@@ -56,7 +55,7 @@ public class OculowSeleniumTest {
     }
 
     @AfterTest
-    public void teardown(){
+    private void teardown(){
         driver.close();
         oculow.dispose();
     }
