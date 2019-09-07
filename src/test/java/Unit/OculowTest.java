@@ -16,8 +16,8 @@ public class OculowTest {
     @BeforeTest
     public void setup(){
         oculow = new Oculow();
-        oculow.setApiKey("bf4df221-ba67-43af-b66d-55d3cabe9cb5");
-        oculow.setAppId("project-lince");
+        oculow.setApiKey("lM4NyntwtS24e1cvpBzwUfMv6Ix+3W2Z","bpgS3T4B5S7gn1DnA3FTPm9Nb8wsZIlG");
+        oculow.setAppId("oculow");
         oculow.setExecutionId("5b2eee27-fbaa-408b-aece-f30e7361f064");
     }
     @Test

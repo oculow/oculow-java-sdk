@@ -19,6 +19,8 @@
 //        driver.manage().window().maximize();
 //        oculow.setBaselineManagement(MANAGEMENT.ASSISTED);
 //        oculow.setComparison(COMPARISON.IGNORE_AA);
+//        oculow.setApiKey("9HanEbAexPF2cPAJzlFNXBIGNzqhK2pU","uTLZZLR/HnUOCu5U7vNI6WrsYTBGTBxM");
+//        oculow.setAppId("oculow");
 //    }
 //
 //    @Test

@@ -8,6 +8,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.apache.commons.lang.StringUtils;
+
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,8 +34,9 @@ public class Oculow {
     }
 
     private String executionId;
-    private String moduleApiKey = "0de8ef6f-7837-4deb-81ed-6837ab67da23";  // TODO PARAMETRIZE
-    private String moduleAppId = "oculow";  // TODO PARAMETRIZE
+    private String moduleApiKey = null;
+    private String moduleSecretKey = null;
+    private String moduleAppId = null;
 
 
     private int moduleComparisonLogic = 0;
@@ -40,26 +44,29 @@ public class Oculow {
     private String viewportWidth ="";
     private String viewportHeight = "";
 
-    public void captureScreen(WebDriver driver){
-        viewportWidth=String.valueOf(driver.manage().window().getSize().getWidth());
-        viewportHeight= String.valueOf(driver.manage().window().getSize().getHeight());
-        File id= new File(driver.getTitle()+".png");
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    private void _captureScreen(WebDriver driver, String title) {
+        assert moduleApiKey != null;
+        assert moduleSecretKey != null;
+        assert moduleAppId != null;
+        viewportWidth = String.valueOf(driver.manage().window().getSize().getWidth());
+        viewportHeight = String.valueOf(driver.manage().window().getSize().getHeight());
+        File id = new File(title + ".png");
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         scrFile.renameTo(id);
         uploadImage(id);
         id.delete();
         scrFile.delete();
+    }
+
+    public void captureScreen(WebDriver driver){
+        _captureScreen(driver, driver.getTitle());
 
     }
+
+
+
     public void captureScreen(WebDriver driver, String baselineId){
-        viewportWidth=String.valueOf(driver.manage().window().getSize().getWidth());
-        viewportHeight= String.valueOf(driver.manage().window().getSize().getHeight());
-        File id= new File(baselineId+".png");
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        scrFile.renameTo(id);
-        uploadImage(id);
-        id.delete();
-        scrFile.delete();
+        _captureScreen(driver, baselineId);
 
     }
     public String uploadImage(File image){
@@ -73,10 +80,20 @@ public class Oculow {
 
     private String _uploadImage(File binaryFile){
         Map<String, String> parameters = new HashMap<String, String>();
-        parameters.put("api_key", moduleApiKey);
+        parameters.put("api_key", moduleApiKey+"__"+moduleSecretKey);
         parameters.put("app_id", moduleAppId);
         parameters.put("comparison_logic", String.valueOf(moduleComparisonLogic));
         parameters.put("baseline_management", String.valueOf(moduleBaselineManagement));
+        if (viewportWidth.equals("") || viewportHeight.equals("")){
+            try {
+                BufferedImage bimg = ImageIO.read(binaryFile);
+                viewportWidth = String.valueOf(bimg.getWidth());
+                viewportHeight = String.valueOf(bimg.getHeight());
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error detecting image size, setting 0,0 as default size.");
+            }
+        }
         parameters.put("viewport", "{\"width\": \""+viewportWidth+"\", \"height\": \""+viewportHeight+"\"}");
         if (executionId != null){
             parameters.put("execution_id", executionId);
@@ -92,8 +109,9 @@ public class Oculow {
         return executionId;
     }
 
-    public void setApiKey(String moduleApiKey) {
-        this.moduleApiKey = moduleApiKey;
+    public void setApiKey(String apiKey, String secretKey) {
+        this.moduleApiKey = apiKey;
+        this.moduleSecretKey = secretKey;
     }
 
 
