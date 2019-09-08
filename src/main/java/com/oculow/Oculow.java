@@ -1,5 +1,6 @@
 package com.oculow;
 
+import org.json.*;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -28,6 +29,7 @@ public class Oculow {
     private final String url = "https://us-central1-lince-232621.cloudfunctions.net/";
     private final String processFunction = "process_image-dev";  // TODO PARAMETRIZE
     private final String executionStatusFunction = "get_execution_status-dev"; // TODO PARAMETRIZE
+    private String moduleAccID = null;
 
     public void setExecutionId(String executionId) {
         this.executionId = executionId;
@@ -102,7 +104,11 @@ public class Oculow {
         HttpResponse response = postRequest(furl, binaryFile,parameters);
         assert response.getStatusLine().getStatusCode()==200;
         try {
-            executionId= StringUtils.chomp(EntityUtils.toString(response.getEntity())).replaceAll("^\"|\"$", "");
+            JSONObject obj = new JSONObject(StringUtils.chomp(EntityUtils.toString(response.getEntity())).replaceAll("\"", ""));
+            if (moduleAccID == null){
+                moduleAccID = obj.getString("acc_id");
+            }
+            executionId= obj.getString("execution_id");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -144,10 +150,10 @@ public class Oculow {
         assert results != null;
 
         if (results.toLowerCase().contains("action required")) {
-            System.out.println(String.format("Baseline action is required, visit %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleApiKey));
+            System.out.println(String.format("Baseline action is required, visit %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleAccID));
         }
         else if (results.toLowerCase().contains("failed")) {
-            System.out.println(String.format("Tests failed, please review at %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleApiKey));
+            System.out.println(String.format("Tests failed, please review at %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleAccID));
         }
         assert results.toLowerCase().contains("passed");
 
