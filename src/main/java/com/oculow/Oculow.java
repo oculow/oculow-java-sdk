@@ -21,10 +21,6 @@ import java.util.Map;
 import static com.oculow.Utils.Network.postRequest;
 
 public class Oculow {
-    enum Color
-    {
-        RED, GREEN, BLUE;
-    }
     private final String reportBaseUrl = "http://www.oculow.com/dashboard/executions.html";
     private final String url = "https://us-central1-lince-232621.cloudfunctions.net/";
     private final String processFunction = "process_image-dev";  // TODO PARAMETRIZE
@@ -34,7 +30,9 @@ public class Oculow {
     public void setExecutionId(String executionId) {
         this.executionId = executionId;
     }
-
+    public void setAccID(String moduleAccID) {
+        this.moduleAccID = moduleAccID;
+    }
     private String executionId;
     private String moduleApiKey = null;
     private String moduleSecretKey = null;

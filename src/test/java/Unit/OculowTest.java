@@ -16,9 +16,10 @@ public class OculowTest {
     @BeforeTest
     public void setup(){
         oculow = new Oculow();
-        oculow.setApiKey("lM4NyntwtS24e1cvpBzwUfMv6Ix+3W2Z","bpgS3T4B5S7gn1DnA3FTPm9Nb8wsZIlG");
+        oculow.setApiKey("9HanEbAexPF2cPAJzlFNXBIGNzqhK2pU","uTLZZLR/HnUOCu5U7vNI6WrsYTBGTBxM");
         oculow.setAppId("oculow");
-        oculow.setExecutionId("5b2eee27-fbaa-408b-aece-f30e7361f064");
+        oculow.setAccID("0de8ef6f-7837-4deb-81ed-6837ab67da23");
+
     }
     @Test
     public void testManagementConfig(){
