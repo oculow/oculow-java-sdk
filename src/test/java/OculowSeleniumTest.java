@@ -19,7 +19,7 @@
 //        driver.manage().window().maximize();
 //        oculow.setBaselineManagement(MANAGEMENT.ASSISTED);
 //        oculow.setComparison(COMPARISON.IGNORE_AA);
-//        oculow.setApiKey("jqfa7LWSQQAPrlUgJdhbYs0TqNxpk5WH","nv/cGii69BNs9kg3CdxqwpkkOGbXkX6j");
+//        oculow.setApiKey("10eVwxGqZMkJILKrlPnL8RmHZjAhDiNy","qzSqIAHye2MJvrt37VxzBsv4ADwO9Q7G");
 //        oculow.setAppId("oculow");
 //    }
 //

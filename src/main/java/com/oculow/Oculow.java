@@ -23,8 +23,8 @@ import static com.oculow.Utils.Network.postRequest;
 public class Oculow {
     private final String reportBaseUrl = "http://www.oculow.com/dashboard/executions.html";
     private final String url = "https://us-central1-lince-232621.cloudfunctions.net/";
-    private final String processFunction = "process_image-dev";  // TODO PARAMETRIZE
-    private final String executionStatusFunction = "get_execution_status-dev"; // TODO PARAMETRIZE
+    private final String processFunction = "process_image-prod";  // TODO PARAMETRIZE
+    private final String executionStatusFunction = "get_execution_status-prod"; // TODO PARAMETRIZE
     private String moduleAccID = null;
 
     public void setExecutionId(String executionId) {
