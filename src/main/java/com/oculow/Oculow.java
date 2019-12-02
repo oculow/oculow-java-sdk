@@ -153,9 +153,9 @@ public class Oculow {
         else if (results.toLowerCase().contains("failed")) {
             System.out.println(String.format("Tests failed, please review at %s?id=%s&app_id=%s&acc_id=%s", reportBaseUrl, executionId, moduleAppId, moduleAccID));
         }
+        System.out.println(String.format("To view a detailed report of the execution please navigate to %s?id=%s", reportBaseUrl, executionId));
         assert results.toLowerCase().contains("passed");
 
-        System.out.println(String.format("To view a detailed report of the execution please navigate to %s?id=%s", reportBaseUrl, executionId));
 
 
     }
