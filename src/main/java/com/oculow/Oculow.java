@@ -48,8 +48,10 @@ public class Oculow {
         assert moduleApiKey != null;
         assert moduleSecretKey != null;
         assert moduleAppId != null;
-        viewportWidth = String.valueOf(driver.manage().window().getSize().getWidth());
-        viewportHeight = String.valueOf(driver.manage().window().getSize().getHeight());
+        setResolution(
+                String.valueOf(driver.manage().window().getSize().getWidth()),
+                String.valueOf(driver.manage().window().getSize().getHeight())
+        );
         File id = new File(title + ".png");
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         scrFile.renameTo(id);
@@ -84,17 +86,20 @@ public class Oculow {
         parameters.put("app_id", moduleAppId);
         parameters.put("comparison_logic", String.valueOf(moduleComparisonLogic));
         parameters.put("baseline_management", String.valueOf(moduleBaselineManagement));
-        if (viewportWidth.equals("") || viewportHeight.equals("")){
+        if (this.viewportWidth.equals("") || this.viewportHeight.equals("")){
             try {
                 BufferedImage bimg = ImageIO.read(binaryFile);
-                viewportWidth = String.valueOf(bimg.getWidth());
-                viewportHeight = String.valueOf(bimg.getHeight());
+                this.viewportWidth = String.valueOf(bimg.getWidth());
+                this.viewportHeight = String.valueOf(bimg.getHeight());
             } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Error detecting image size, setting 0,0 as default size.");
             }
         }
-        parameters.put("viewport", "{\"width\": \""+viewportWidth+"\", \"height\": \""+viewportHeight+"\"}");
+        parameters.put(
+                "viewport",
+                "{\"width\": \""+this.viewportWidth+"\", \"height\": \""+this.viewportHeight+"\"}"
+        );
         if (executionId != null){
             parameters.put("execution_id", executionId);
         }
@@ -121,6 +126,11 @@ public class Oculow {
 
     public void setAppId(String moduleAppId) {
         this.moduleAppId = moduleAppId;
+    }
+
+    public void setResolution(String width, String height) {
+        this.viewportWidth = width;
+        this.viewportHeight = height;
     }
 
     public void setComparison(COMPARISON moduleComparisonLogic) {
