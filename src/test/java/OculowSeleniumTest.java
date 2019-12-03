@@ -19,7 +19,7 @@
 //        driver.manage().window().maximize();
 //        oculow.setBaselineManagement(MANAGEMENT.ASSISTED);
 //        oculow.setComparison(COMPARISON.IGNORE_AA);
-//        oculow.setApiKey("9HanEbAexPF2cPAJzlFNXBIGNzqhK2pU","uTLZZLR/HnUOCu5U7vNI6WrsYTBGTBxM");
+//        oculow.setApiKey("10eVwxGqZMkJILKrlPnL8RmHZjAhDiNy","qzSqIAHye2MJvrt37VxzBsv4ADwO9Q7G");
 //        oculow.setAppId("oculow");
 //    }
 //
@@ -31,27 +31,14 @@
 //        String actualTitle = driver.getTitle();
 //        assert actualTitle.contentEquals("Oculow");
 //
-//        oculow.captureScreen(driver, "home page");
+//        oculow.captureScreen(driver, "home page low res");
 //
 //        WebElement _el = driver.findElement(By.id("landing-email"));
-////        _el.sendKeys("diego.ferrand@abstracta.com.uy");
-//
-//        oculow.captureScreen(driver, "form submit");
 //
 //        _el.click();
 //
 //        driver.get("https://www.oculow.com/dashboard/index.html");
 //
-//        /*
-//        #TODO not working on website
-//        driver.findElement(By.id("btn_signin")).click();
-//        oculow.captureScreen(driver, "login");
-//        driver.findElement(By.id("username")).sendKeys("test");
-//        driver.findElement(By.id("password")).sendKeys("test");
-//
-//        oculow.captureScreen(driver, "login complete");
-//        driver.findElement(By.id("btn_signin")).click();
-//        */
 //
 //        oculow.captureScreen(driver, "dashboard index");
 //    }
