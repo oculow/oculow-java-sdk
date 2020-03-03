@@ -6,8 +6,11 @@
     <artifactId>sdk</artifactId>
     <version>0.0.7-SNAPSHOT</version>
     <name>Oculow SDK</name>
-    <description>SDK used for visual testing. This sdk handles all communications with our services, so all you
-    need to do to implement visual tests, is configure your project details and indicate which screens to validate.
+    <description>Oculow SDK for Java
+
+Oculow is a visual validation tool which provides users with the funcitonality of detecting differences between versions and detecting visual errors in the application. For more information visit www.oculow.com.
+
+To learn how to use our tool, visit our documentation website: https://www.oculow.com/documentation/index.html
     </description>
     <url>https://www.oculow.com/</url>
     <licenses>
